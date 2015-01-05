@@ -1,0 +1,20 @@
+== Sending patches ==
+
+1. Open a terminal and navigate to your "local" directory.
+
+2. Update your code and fix all merge issues.
+	git pull --rebase
+
+3. Run the following in a terminal:
+	git diff remotes/origin/master > patch.txt
+
+4. Copy the contents of patch.txt to pastebin and post the link.
+
+== Using unofficial patches ==
+
+1. Open a terminal and navigate to your "local" directory.
+
+2. Run the following in a terminal:
+	git apply /path/to/patch.txt
+
+

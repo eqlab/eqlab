@@ -1,0 +1,46 @@
+This is tested primarily on Linux Mint 17.1. I don't know if the data
+processing parts of this project will run on non-Linux distributions,
+but you're welcome to try. I'll update these instructions if someone
+gets it working.
+
+== Setting up the environment ==
+
+If you're on Windows:
+	Install cygwin. You don't need this if you know what
+	you're doing, but the instructions here will assume
+	you have a unix terminal.
+
+If you want the always-updated code from the btsync folder:
+	Install git from your preferred repository or from:
+		http://www.git-scm.com/
+	Download btsync from:
+		https://www.getsync.com/
+
+If you want to run data processing code ("processors" folder)
+	Install theano using instructions on:
+		http://deeplearning.net/software/theano/install.html
+
+
+== Getting the code ==
+
+1. Create a directory where the code will be stored. Copy the btsync 
+executable to that directory and run it. If you're on Linux, open a
+new tab to:
+	http://localhost:8888.
+
+3. Enter the key: ###. Once that's done syncing, you'll have a folder
+called 'global-read-only'.
+
+4. Open a terminal (cygwin on Windows) and navigate to the directory 
+that contains the global-read-only folder. (Don't go into the
+global-read-only folder.) Run the following in a terminal:
+	git clone global-read-only local
+
+The project will now be in the folder "local".
+
+As long as btsync is running, it should keep the global-read-only
+folder up-to-date. If you want to pull changes into your "local"
+directory, run the following in a terminal while in the "local"
+directory:
+	git pull --rebase
+
