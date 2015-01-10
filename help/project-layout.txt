@@ -1,0 +1,39 @@
+scrapers/ --
+This folder contains scripts for scraping data and putting
+the scraped data into some database or file. These scripts
+should fetch anything and everything that might be usable.
+For efficiency reasons, the output of these scripts can
+be in any format, and that format should be well documented
+in the corresponding script.
+
+All output from these scripts MUST be tagged with the
+timezone you were in when you scraped the data, and a UTC
+timestamp. Please make sure your local clock is accurate to 
+within 5 minutes before running a scraper.
+
+It's better for scrapers to be incremental or scheduled so
+that redundant scraping is minimized. Before running a
+scraper, you should try to download data from someone that
+has already run the script.
+
+
+observers/ --
+The scripts here process scraped data and output some set of
+mathematical models. For example, an observer can output a
+set of graphs, cartesian coordinates, or probability vectors.
+
+The output format for observers can be anything for now, but
+that might change later on for code reuses reasons.
+
+
+processors/ --
+These scripts take mathematical models as input, and they
+output either human-readable data (eg. visualizations),
+human-queriable data (eg. databases), or other mathematical
+models. The output of processors can be used as input to 
+scrapers, observers, or other processors.
+
+The output format for processors can be anything for now, but
+some output formats might be preferred later on for code reuse
+reasons.
+
