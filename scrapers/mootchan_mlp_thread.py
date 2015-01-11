@@ -111,8 +111,8 @@ if __name__ == '__main__':
 		try:
 			_main()
 
-			# wait 10 minutes before checking again
-			sleep(3 * 60)
+			# wait 20 minutes before checking again
+			sleep(20 * 60)
 		except KeyboardInterrupt:
 			break
 		except httplib.BadStatusLine, httplib.CannotSendRequest:
