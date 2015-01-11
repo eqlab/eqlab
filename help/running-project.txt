@@ -1,0 +1,23 @@
+== Running scrapers ==
+
+1. If you have someone else's data files and want to save
+time, copy them to the data/ directory in your "local"
+folder:
+	cd local
+	mkdir data
+	cp saved_data_file data/
+
+2. All available scrapers will be in the scrapers/ folder.
+You can execute them through x:
+	chmod +x ./x
+	./x scrapers/fimfic_story_api.py
+	./x scrapers/mootchan_mlp_thread.py
+
+3. The results will be in the data/ directory in your "local"
+folder. The fimfic_story_api.py and mootchan_mlp_thread.py
+scripts store the data in sqlite3 databases:	
+	sqlite3 data/fimfic_story_api.sqlite3
+	sqlite3 data/mootchan_mlp_thread.sqlite3
+
+
+
