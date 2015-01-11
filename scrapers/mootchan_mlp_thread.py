@@ -69,6 +69,10 @@ def getopenthreads():
 
 	return set(allopen)
 
+def refreshclient():
+	global client
+	client = httplib.HTTPSConnection('a.4cdn.org')
+
 class _globals: pass
 _g = _globals()
 _g.openthreads = set()
@@ -108,9 +112,11 @@ if __name__ == '__main__':
 			_main()
 
 			# wait 10 minutes before checking again
-			sleep(10 * 60)
+			sleep(3 * 60)
 		except KeyboardInterrupt:
 			break
+		except httplib.BadStatusLine, httplib.CannotSendRequest:
+			refreshclient()
 		except:
 			pass
 	
