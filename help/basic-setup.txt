@@ -28,8 +28,8 @@ executable to that directory and run it. If you're on Linux, open a
 new tab to:
 	http://localhost:8888.
 
-3. Enter the key: ###. Once that's done syncing, you'll have a folder
-called 'global-read-only'.
+3. Enter the key: BHVVONNZJWV6BK7PA5IG42MB424XREIOL. Once that's done 
+syncing, you'll have a folder called 'global-read-only'.
 
 4. Open a terminal (cygwin on Windows) and navigate to the directory 
 that contains the global-read-only folder. (Don't go into the
