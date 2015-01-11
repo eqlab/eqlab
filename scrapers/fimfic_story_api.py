@@ -49,6 +49,11 @@ def gethighestfetched():
 	result = db.execute('select max(storyid) from stories')
 	return int(result.next()[0] or 0)
 
+def refreshclient():
+	global client
+	client = httplib.HTTPSConnection('www.fimfiction.net')
+
+
 def _status(msg):
 	print msg
 
@@ -94,8 +99,11 @@ if __name__ == '__main__':
 			_main()
 		except KeyboardInterrupt:
 			break
+		except httplib.BadStatusLine, httplib.CannotSendRequest:
+			refreshclient()
 		except:
 			pass
+			
 	
 	print 'done'
 
