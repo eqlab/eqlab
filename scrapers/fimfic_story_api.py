@@ -20,7 +20,7 @@ db = pyutils.sqlite3db(outputfn, createsql)
 
 timezone = environ['timezone']
 
-client = httplib.HTTPConnection('www.fimfiction.net')
+client = httplib.HTTPSConnection('www.fimfiction.net')
 
 def updatefic(storyid):
 	requesttime = int(time())
