@@ -2,7 +2,7 @@
 
 import httplib, urllib2
 import re, json
-from utils import pyutils
+from utils.pyutils import database
 from os import environ
 from time import time, sleep
 
@@ -15,7 +15,7 @@ createsql = """
 	)"""
 
 outputfn = '%s/mootchan_mlp_thread.sqlite3' % environ['datadir']
-db = pyutils.sqlite3db(outputfn, createsql)
+db = database.sqlite3db(outputfn, createsql)
 
 timezone = environ['timezone']
 

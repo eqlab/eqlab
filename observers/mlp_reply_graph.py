@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from utils import pyutils
+from utils.pyutils import database
 from os import environ
 import json, re
 
@@ -26,10 +26,10 @@ createsql = """
 	"""
 
 inputfn = '%s/mootchan_mlp_thread.sqlite3' % environ['datadir']
-indb = pyutils.sqlite3db(inputfn, None)
+indb = database.sqlite3db(inputfn, None)
 
 outputfn = '%s/mlp_reply_graph.sqlite3' % environ['datadir']
-outdb = pyutils.sqlite3db(outputfn, createsql)
+outdb = database.sqlite3db(outputfn, createsql)
 
 
 known = outdb.execute('select postid from visited')
