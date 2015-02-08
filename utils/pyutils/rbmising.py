@@ -12,6 +12,7 @@ compresseddata = rbmising.hiddenspins(weights, uncompresseddata).eval()
 uncompresseddata = rbmising.observedspins(weights, compresseddata).eval()
 """
 
+import math
 import numpy
 import theano
 import graddesc
@@ -19,7 +20,7 @@ from theano import tensor
 
 
 def jmatrix(nobserved, nhidden, name='jmatrix'):
-	matrix = 0.2 * numpy.random.randn(nobserved, nhidden)
+	matrix = 1.0 / math.sqrt(nhidden) * numpy.random.randn(nobserved, nhidden)
 	return theano.shared(matrix, borrow=True, name=name)
 
 def hiddenspins(jmatrix, observed):
@@ -45,9 +46,9 @@ def gibbs(jmatrix, observed, iterations):
 	
 	return observed, hidden, robserved[-1], rhidden[-1]
 
-def trainer(jmatrix, batch):
+def trainer(jmatrix, batch, cycles=1):
 	observed, hidden, robserved, rhidden = gibbs(
-		jmatrix, batch, 1)
+		jmatrix, batch, cycles)
 	
 	p = observed * 0.5 + 0.5
 	q = robserved * 0.5 + 0.5
@@ -58,6 +59,3 @@ def trainer(jmatrix, batch):
 
 	return crossent, updates
 
-	
-
-	
