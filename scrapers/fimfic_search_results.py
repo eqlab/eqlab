@@ -27,7 +27,6 @@ def scraperesults(resultspage):
 	requesttime = int(time())
 	client.request('GET', '%s&compact_view=1' % resultspage)
 	response = client.getresponse().read()
-	open('test.html', 'w').write(response)
 
 	response = BeautifulSoup(response)
 	storylist = response.find('ul', {'class':'story-list'})
