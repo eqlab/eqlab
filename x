@@ -5,7 +5,7 @@
 import sys
 from subprocess import Popen as popen
 from time import time, strftime, gmtime
-from os import path, mkdir, chdir
+from os import path, mkdir, chdir, environ
 
 cwd = path.dirname(sys.argv[0])
 chdir(cwd)
@@ -13,6 +13,7 @@ chdir(cwd)
 timezone = strftime('%Z', gmtime())
 utctime = int(time())
 datadir = 'data'
+extdir = 'external'
 
 if not path.exists(datadir):
 	mkdir(datadir)
@@ -20,8 +21,11 @@ if not path.exists(datadir):
 env = {
 	'timezone': timezone,
 	'utctime': str(utctime),
-	'datadir': datadir
+	'datadir': datadir,
+	'extdir': extdir,
 }
+
+env.update(environ)
 
 # get name of module to execute
 
