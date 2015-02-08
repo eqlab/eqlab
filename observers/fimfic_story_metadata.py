@@ -5,8 +5,8 @@
 # script can change after a story has been posted, so there's 
 # really no way around this.
 
-from utils.pyutils import database
-from os import environ, remove
+from utils.pyutils import database, remove
+from os import environ
 from bs4 import BeautifulSoup
 import numpy
 import json
@@ -135,10 +135,10 @@ for comments, views in _aggregate:
 	rating = numpy.arctanh(float(comments - views) / (comments + views + 1))
 
 	outdb.execute('insert into story_features values(?,?,?)',
-		[storyid, getfeatureid('comments: -0.75+'), _spin(rating > -0.25)])
+		[storyid, getfeatureid('comments: -0.25+'), _spin(rating > -0.25)])
 
 	outdb.execute('insert into story_features values(?,?,?)',
-		[storyid, getfeatureid('comments: 0.1+'), _spin(rating > 0.25)])
+		[storyid, getfeatureid('comments: 0.1+'), _spin(rating > 0.1)])
 	
 	
 outdb.commit()
